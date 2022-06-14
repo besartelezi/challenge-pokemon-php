@@ -1,6 +1,5 @@
 # PHP, (not that) Pretty Huge (of a) Problem
 For this challenge, I will be making a Pokédex again, but this time I will make it with PHP, and not with Javascript.<br>
-[Here you can find my PHP Pokédex!](https://besartelezi.github.io/challenge-pokemon-php/)<br>
 If you want to check out my previous JS Pokédex, [here is the repository](https://github.com/besartelezi/ajax-pokedex), and [here is the Pokédex itself](https://besartelezi.github.io/ajax-pokedex/). </br>
 
 This will be the very first time in my entire life that I will be using PHP. 
@@ -46,3 +45,10 @@ Can I separate the HTML and the PHP completely from each other? Or do I need to 
 Find out next time on the new episode of Besart PHP Z!
 
 ###### Editor's note: I do have to mix both languages together. I figured that out the hard way, but I figured it out nonetheless!
+
+## The first step is always the hardest one to take
+Starting out with smaller, more do-able goals was exactly the way to go. 
+After I figured out how to var_dump() the user's input, I was quickly able to do more things.
+As of now, my Pokédex **can show the ID, Name, and an image of the Pokémon the user has searched for!** <br>
+The next thing I will focus on, is to try and show the entire evolutionary line of the Pokémon.
+After I'm done with that, I will also add the CSS I prepared for my previous Pokédex, to this Pokédex.

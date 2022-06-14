@@ -1,3 +1,24 @@
+<!-- Getting all the needed information from the API -->
+<?php $pokemonAPI = "https://pokeapi.co/api/v2/"; ?>
+
+<?php if(isset($_GET['pokemonName'])): ?>
+
+    <?php
+    //Adds the searched ID or name of the Pokémon to the API URL
+    //In JS, you add something to a string by adding a '+' sign between strings, in PHP, you do this like how I did it here
+    $searchedPokemon = "https://pokeapi.co/api/v2/pokemon/";
+    $searchedPokemon .= $_GET["pokemonName"];
+    ?>
+
+    <?php
+    //Get data of searched Pokémon
+    $getPokemonData = file_get_contents($searchedPokemon);
+    $getPokemonDataArray = json_decode($getPokemonData);
+    //Get image of searched Pokémon
+    $pokemonImage = $getPokemonDataArray->sprites->other->home->front_default;
+    ?>
+<?php endif; ?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,33 +36,25 @@
                 <input type="submit" name="searchPokemonButton" id="searchPokemonButton"
                        class="button" value="Search Pokémon!" />
         </section>
-        <?php $pokemonAPI = "https://pokeapi.co/api/v2/"; ?>
-
-        <?php if(isset($_GET['pokemonName'])): ?>
-        <?php
-        //Adds the searched ID or name of the Pokémon to the API URL
-        //In JS, you add something to a string by adding a '+' sign between strings, in PHP, you do this like how I did it here
-        $searchedPokemon = "https://pokeapi.co/api/v2/pokemon/";
-        $searchedPokemon .= $_GET["pokemonName"];
-        ?>
-        <?php endif; ?>
 
 
         <div class ="IDNumber" id="IDNumber"> ID Number of Pokémon:</div>
         <?php if(isset($_GET['pokemonName'])): ?>
-        <?php
-        //Get data of searched Pokémon
-        $getPokemonData = file_get_contents($searchedPokemon);
-        $getPokemonDataArray = json_decode($getPokemonData);
-        ?>
-        <?php
-        echo $getPokemonDataArray->id;
-        ?>
+
+            <?php
+            //show ID of searched Pokémon
+            echo $getPokemonDataArray->id; ?>
         <?php endif; ?>
+
+
+
         <section class="ScreenWrapper">
             <div class="ScreenBackground">
                 <div class="PokemonImage">
-                    <img src="images/pokeball.svg" id="PokemonPicture">
+                    <?php if(isset($_GET['pokemonName'])): ?>
+                        <img src="<?php echo $pokemonImage;?>" alt="The Pokémon that the user has searched for" id="PokemonPicture">
+                    <?php endif; ?>
+
                 </div>
             </div>
             <div class ="Name" id="Name">Name of Pokémon:</div>
