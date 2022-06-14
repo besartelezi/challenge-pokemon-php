@@ -1,10 +1,9 @@
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Pokédex</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="images/pokeball.svg">
+    <link rel="icon" type="image/x-icon" href="pokeball.svg">
 </head>
 <body>
 <section class="row" id="EntirePokdex">
@@ -15,30 +14,43 @@
                 <input type="text" id="SearchPokemon" name="pokemonName" placeholder="Search Pokémon by ID or name!"/>
                 <input type="submit" name="searchPokemonButton" id="searchPokemonButton"
                        class="button" value="Search Pokémon!" />
-                <?php if(isset($_GET['pokemonName'])): ?>
-                    You are looking for the pokémon: <?php echo $_GET["pokemonName"]; ?>
-                <?php endif; ?>
         </section>
         <?php $pokemonAPI = "https://pokeapi.co/api/v2/"; ?>
 
         <?php if(isset($_GET['pokemonName'])): ?>
         <?php
         //Adds the searched ID or name of the Pokémon to the API URL
+        //In JS, you add something to a string by adding a '+' sign between strings, in PHP, you do this like how I did it here
         $searchedPokemon = "https://pokeapi.co/api/v2/pokemon/";
         $searchedPokemon .= $_GET["pokemonName"];
         ?>
-        <?php var_dump($searchedPokemon) ?>
         <?php endif; ?>
 
 
-        <div class ="IDNumber" id="IDNumber"> ID Number of Pokémon</div>
+        <div class ="IDNumber" id="IDNumber"> ID Number of Pokémon:</div>
+        <?php if(isset($_GET['pokemonName'])): ?>
+        <?php
+        //Get data of searched Pokémon
+        $getPokemonData = file_get_contents($searchedPokemon);
+        $getPokemonDataArray = json_decode($getPokemonData);
+        ?>
+        <?php
+        echo $getPokemonDataArray->id;
+        ?>
+        <?php endif; ?>
         <section class="ScreenWrapper">
             <div class="ScreenBackground">
                 <div class="PokemonImage">
                     <img src="images/pokeball.svg" id="PokemonPicture">
                 </div>
             </div>
-            <div class ="Name" id="Name">Name of Pokémon</div>
+            <div class ="Name" id="Name">Name of Pokémon:</div>
+            <?php if(isset($_GET['pokemonName'])): ?>
+                <?php
+                echo $getPokemonDataArray->name;
+                ?>
+            <?php endif; ?>
+
             <div class="EvolutionRow" id="EvolutionRow">
 
             </div>
