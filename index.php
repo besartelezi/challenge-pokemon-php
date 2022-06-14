@@ -1,5 +1,3 @@
-<?php
-?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,23 +9,14 @@
 <section class="row" id="EntirePokdex">
     <div class="left-column" id="LeftSidePokedex">
         <section class="PokedexField">
-
-            <?php
-
-            if(isset($_POST["searchPokemonButton"])) {
-                var_dump("button is working!");
-            }
-
-            ?>
-
             <label for="SearchPokemon"></label>
-            <form method="post">
-                <input type="text" id="SearchPokemon" placeholder="Search Pokémon by ID or name!"/>
+            <form action="index.php" method="get">
+                <input type="text" id="SearchPokemon" name="pokemonName" placeholder="Search Pokémon by ID or name!"/>
                 <input type="submit" name="searchPokemonButton" id="searchPokemonButton"
                        class="button" value="Search Pokémon!" />
-
-
-
+                <?php if(isset($_GET['pokemonName'])): ?>
+                    You are looking for the pokemon: <?php echo $_GET["pokemonName"]; ?>
+                <?php endif; ?>
         </section>
         <div class ="IDNumber" id="IDNumber"> ID Number of Pokémon</div>
         <section class="ScreenWrapper">

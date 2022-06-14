@@ -36,10 +36,13 @@ I added a picture that perfectly encapsulates how I started out with this assign
 
 ## To-Do or not To-Do? That's not even a good question of course I have to do it!
 For now, these are some small tasks that I want to achieve:
-* Add a function that will do something small when the Search Pokémon button is clicked.
+* Add a function that will do something small when the Search Pokémon button is clicked. 
+* Get the user input when the button is clicked.
 * Fetch the PokéAPI and get data of one specific Pokémon.
 
 I will mainly focus on the button.
 I also really want to know what the best way is to write code in PHP.
 Can I separate the HTML and the PHP completely from each other? Or do I need to mix both languages together? 
 Find out next time on the new episode of Besart PHP Z!
+
+###### Editor's note: I do have to mix both languages together. I figured that out the hard way, but I figured it out nonetheless!
