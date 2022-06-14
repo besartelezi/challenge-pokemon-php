@@ -11,9 +11,23 @@
 <section class="row" id="EntirePokdex">
     <div class="left-column" id="LeftSidePokedex">
         <section class="PokedexField">
+
+            <?php
+
+            if(isset($_POST["searchPokemonButton"])) {
+                var_dump("button is working!");
+            }
+
+            ?>
+
             <label for="SearchPokemon"></label>
-            <input type="text" id="SearchPokemon" placeholder="Search Pokémon by ID or name!"/>
-            <button id="PokemonSearchButton">Search Pokémon</button>
+            <form method="post">
+                <input type="text" id="SearchPokemon" placeholder="Search Pokémon by ID or name!"/>
+                <input type="submit" name="searchPokemonButton" id="searchPokemonButton"
+                       class="button" value="Search Pokémon!" />
+
+
+
         </section>
         <div class ="IDNumber" id="IDNumber"> ID Number of Pokémon</div>
         <section class="ScreenWrapper">
@@ -56,7 +70,7 @@
 
     </div>
 </section>
-
-<script src="pokedex.js"></script>
 </body>
 </html>
+
+
