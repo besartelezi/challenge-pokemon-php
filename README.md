@@ -19,3 +19,7 @@ By using everything I did in Javascript as an example, I'm more that confident e
 **The most ample way to learn things, is by ex-ample.** <br>
 
 I have found a rather strange problem with PHP though, but I was able to resolve it.
+When I wanted to check out my website locally, I was greeted by a 502 bad gateway error.
+First I thought there was a problem with how I installed PHP, Apache and MySQL on my computer, but this was thankfully not the case.
+I had to pick a CLI interpreter for my PHPStorm.
+Once I added the locally installed PHP.exe file on my computer as the CLI interpreter, the error disappeared and everything went smoothly.
