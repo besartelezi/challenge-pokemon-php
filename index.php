@@ -1,3 +1,4 @@
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,9 +16,21 @@
                 <input type="submit" name="searchPokemonButton" id="searchPokemonButton"
                        class="button" value="Search Pokémon!" />
                 <?php if(isset($_GET['pokemonName'])): ?>
-                    You are looking for the pokemon: <?php echo $_GET["pokemonName"]; ?>
+                    You are looking for the pokémon: <?php echo $_GET["pokemonName"]; ?>
                 <?php endif; ?>
         </section>
+        <?php $pokemonAPI = "https://pokeapi.co/api/v2/"; ?>
+
+        <?php if(isset($_GET['pokemonName'])): ?>
+        <?php
+        //Adds the searched ID or name of the Pokémon to the API URL
+        $searchedPokemon = "https://pokeapi.co/api/v2/pokemon/";
+        $searchedPokemon .= $_GET["pokemonName"];
+        ?>
+        <?php var_dump($searchedPokemon) ?>
+        <?php endif; ?>
+
+
         <div class ="IDNumber" id="IDNumber"> ID Number of Pokémon</div>
         <section class="ScreenWrapper">
             <div class="ScreenBackground">
