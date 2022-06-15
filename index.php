@@ -91,14 +91,19 @@
                         for ($i = 0; $i < count($getEvolutions->chain->evolves_to); $i++){
                             $evolutionNames = $getEvolutions->chain->evolves_to[$i]->species->name;
                             $fetchEvolutionAPI = "https://pokeapi.co/api/v2/pokemon/";
-                            $fetchEvolutionAPI .= $getEvolutions->chain->evolves_to[$i]->species->name;
+                            $fetchEvolutionAPI .= $evolutionNames;
                             $fetchEvolutionImage = file_get_contents($fetchEvolutionAPI);
                             $getEvolutionImage = json_decode($fetchEvolutionImage);
                             $evolutionImage[$i] = $getEvolutionImage->sprites->front_default;
                             if ($getEvolutions->chain->evolves_to[$i]->evolves_to){
                                 for ($j = 0; $j < count($getEvolutions->chain->evolves_to[$i]->evolves_to); $j++){
-                                    $secondEvolution = $getEvolutions->chain->evolves_to[$i]->evolves_to[$j]->species->name;
-                                    var_dump($secondEvolution);
+                                    $secondEvolutionNames = $getEvolutions->chain->evolves_to[$i]->evolves_to[$j]->species->name;
+                                    $fetchSecondEvolutionAPI = "https://pokeapi.co/api/v2/pokemon/";
+                                    $fetchSecondEvolutionAPI .= $secondEvolutionNames;
+                                    $fetchSecondEvolutionImage = file_get_contents($fetchSecondEvolutionAPI);
+                                    $getSecondEvolutionImage = json_decode($fetchSecondEvolutionImage);
+                                    $secondEvolutionImage[$i] = $getSecondEvolutionImage->sprites->front_default;
+
                                 }
                             }
                         }
@@ -111,6 +116,7 @@
                  If i can find a better way to code this part, I will definitely try to do that -->
                 <?php endif; ?>
                 <img src="<?php echo $baseFormImage ?>" alt="the base form of the searched Pokémon">
+
                 <img src="<?php if(isset($evolutionImage[0])): ?>
                 <?php echo $evolutionImage[0] ?><?php endif; ?>">
                 <img src="<?php if(isset($evolutionImage[1])): ?>
@@ -127,6 +133,17 @@
                 <?php echo $evolutionImage[6] ?><?php endif; ?>">
                 <img src="<?php if(isset($evolutionImage[7])): ?>
                 <?php echo $evolutionImage[7] ?><?php endif; ?>">
+
+
+
+                <img src="<?php if(isset($secondEvolutionImage[0])): ?>
+                <?php echo $secondEvolutionImage[0] ?><?php endif; ?>">
+                <img src="<?php if(isset($secondEvolutionImage[1])): ?>
+                <?php echo $secondEvolutionImage[1] ?><?php endif; ?>">
+                <img src="<?php if(isset($secondEvolutionImage[2])): ?>
+                <?php echo $secondEvolutionImage[2] ?><?php endif; ?>">
+                <img src="<?php if(isset($secondEvolutionImage[3])): ?>
+                <?php echo $secondEvolutionImage[3] ?><?php endif; ?>">
             </div>
         </section>
         <section class="BottomSide">
