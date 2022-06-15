@@ -156,12 +156,24 @@
         <div class="PokemonDescriptionScreen">
             <div id = "PokemonDescriptionText">Pokémon Description</div>
         </div>
-        <div class="BlueButtonsTitle" id="PokemonMovesTitle"></div>
+        <div class="BlueButtonsTitle" id="PokemonMovesTitle">This Pokémon can learn the following moves:</div>
         <div class="BlueButtonsComplete" id="PokemonMoves">
-            <div class ="BlueButtons" id="PokemonMove1"></div>
-            <div class ="BlueButtons" id="PokemonMove2"></div>
-            <div class ="BlueButtons" id="PokemonMove3"></div>
-            <div class ="BlueButtons" id="PokemonMove4"></div>
+            <div class ="BlueButtons" id="PokemonMove1">
+                <?php if(isset($getPokemonDataArray->moves[0]->move->name)): ?>
+                    <?php echo $getPokemonDataArray->moves[0]->move->name ?><?php endif; ?>
+            </div>
+            <div class ="BlueButtons" id="PokemonMove2">
+                <?php if(isset($getPokemonDataArray->moves[1]->move->name)): ?>
+                    <?php echo $getPokemonDataArray->moves[1]->move->name ?><?php endif; ?>
+            </div>
+            <div class ="BlueButtons" id="PokemonMove3">
+                <?php if(isset($getPokemonDataArray->moves[2]->move->name)): ?>
+                    <?php echo $getPokemonDataArray->moves[2]->move->name ?><?php endif; ?>
+            </div>
+            <div class ="BlueButtons" id="PokemonMove4">
+                <?php if(isset($getPokemonDataArray->moves[3]->move->name)): ?>
+                    <?php echo $getPokemonDataArray->moves[3]->move->name ?><?php endif; ?>
+            </div>
         </div>
         <div class="Typing" id = "TypingTitle">
         </div>
