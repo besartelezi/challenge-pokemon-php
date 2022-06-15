@@ -89,8 +89,12 @@
                 $baseFormImage = $getBaseFormImage->sprites->front_default;
                     if ($getEvolutions->chain->evolves_to){
                         for ($i = 0; $i < count($getEvolutions->chain->evolves_to); $i++){
-                            $evolution = $getEvolutions->chain->evolves_to[$i]->species->name;
-                            var_dump($evolution);
+                            $evolutionNames = $getEvolutions->chain->evolves_to[$i]->species->name;
+                            $fetchEvolutionAPI = "https://pokeapi.co/api/v2/pokemon/";
+                            $fetchEvolutionAPI .= $getEvolutions->chain->evolves_to[$i]->species->name;
+                            $fetchEvolutionImage = file_get_contents($fetchEvolutionAPI);
+                            $getEvolutionImage = json_decode($fetchEvolutionImage);
+                            $evolutionImage[$i] = $getEvolutionImage->sprites->front_default;
                             if ($getEvolutions->chain->evolves_to[$i]->evolves_to){
                                 for ($j = 0; $j < count($getEvolutions->chain->evolves_to[$i]->evolves_to); $j++){
                                     $secondEvolution = $getEvolutions->chain->evolves_to[$i]->evolves_to[$j]->species->name;
@@ -100,8 +104,29 @@
                         }
                     }
                     ?>
+                <!-- Using php if(isset()), the img src will only be visible if there has been an src assigned to it.
+                This means, that the images are invisible until the user has searched for a Pokémon
+                 I added 8 img tags for the first evolutions, because the current pokemon with the most evolutions is Eevee with 8 Eeveelutions
+                 However, this can still change in the future, so this isn't the best way to code this in my opinion
+                 If i can find a better way to code this part, I will definitely try to do that -->
                 <?php endif; ?>
-                <img src="<?php echo $baseFormImage ?>">
+                <img src="<?php echo $baseFormImage ?>" alt="the base form of the searched Pokémon">
+                <img src="<?php if(isset($evolutionImage[0])): ?>
+                <?php echo $evolutionImage[0] ?><?php endif; ?>">
+                <img src="<?php if(isset($evolutionImage[1])): ?>
+                <?php echo $evolutionImage[1] ?><?php endif; ?>">
+                <img src="<?php if(isset($evolutionImage[2])): ?>
+                <?php echo $evolutionImage[2] ?><?php endif; ?>">
+                <img src="<?php if(isset($evolutionImage[3])): ?>
+                <?php echo $evolutionImage[3] ?><?php endif; ?>">
+                <img src="<?php if(isset($evolutionImage[4])): ?>
+                <?php echo $evolutionImage[4] ?><?php endif; ?>">
+                <img src="<?php if(isset($evolutionImage[5])): ?>
+                <?php echo $evolutionImage[5] ?><?php endif; ?>">
+                <img src="<?php if(isset($evolutionImage[6])): ?>
+                <?php echo $evolutionImage[6] ?><?php endif; ?>">
+                <img src="<?php if(isset($evolutionImage[7])): ?>
+                <?php echo $evolutionImage[7] ?><?php endif; ?>">
             </div>
         </section>
         <section class="BottomSide">
