@@ -78,7 +78,15 @@
                     ?>
 
                     <?php
-                var_dump($getEvolutions->chain->species->name);
+                //getting the name of the first pokemon in the evolutionary line
+                $baseFormName = $getEvolutions->chain->species->name;
+                //getting the API link to said pokemon
+                $fetchBaseFormAPI = "https://pokeapi.co/api/v2/pokemon/";
+                $fetchBaseFormAPI .= $baseFormName;
+                $fetchBaseFormImage = file_get_contents($fetchBaseFormAPI);
+                $getBaseFormImage = json_decode($fetchBaseFormImage);
+                //getting the image URL of said pokemon
+                $baseFormImage = $getBaseFormImage->sprites->front_default;
                     if ($getEvolutions->chain->evolves_to){
                         for ($i = 0; $i < count($getEvolutions->chain->evolves_to); $i++){
                             $evolution = $getEvolutions->chain->evolves_to[$i]->species->name;
@@ -92,8 +100,8 @@
                         }
                     }
                     ?>
-
                 <?php endif; ?>
+                <img src="<?php echo $baseFormImage ?>">
             </div>
         </section>
         <section class="BottomSide">
