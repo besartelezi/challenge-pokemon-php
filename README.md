@@ -31,7 +31,7 @@ For now, I will start out by creating some smaller goals that I want to achieve.
 I'll go back to my roots, split up the big bad assignment, into smaller do-able tasks that I'll be able to complete.
 I added a picture that perfectly encapsulates how I started out with this assignment.
 
-![alt text](https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3A%2F%2Fi.kym-cdn.com%2Fphotos%2Fimages%2Fnewsfeed%2F001%2F318%2F550%2Fe2d.jpg)
+![Me starting out with PHP.](/images/risktaker.webp)
 
 ## To-Do or not To-Do? That's not even a good question of course I have to do it!
 For now, these are some small tasks that I want to achieve:
@@ -52,3 +52,26 @@ After I figured out how to var_dump() the user's input, I was quickly able to do
 As of now, my Pokédex **can show the ID, Name, and an image of the Pokémon the user has searched for!** <br>
 The next thing I will focus on, is to try and show the entire evolutionary line of the Pokémon.
 After I'm done with that, I will also add the CSS I prepared for my previous Pokédex, to this Pokédex.
+
+## Evolution definition, make them Professors go crazy!
+Getting the names of all the evolutions of the Pokémon was something that I already did in my last Pokédex, so that wasn't that complicated.
+The biggest obstacle with PHP was showing the images of the evolutions.
+I was looking for something similar to the "createElement" function of Javascript but in PHP.
+I did found some things that seemed interesting, but they didn't seem like what I was exactly looking for.
+Eventually, I just added img tags in HTML and added the URL links of the images to the src. <br>
+
+The problem here was that, not all Pokémon have evolutions, and on the website itself you could see that there was a broken image URL.
+But wait, I got an idea! <br>
+
+![Idea time!](images/homer.gif) <br>
+
+By using if(isset()) I can make something visible, only when what I selected has a value set to it.
+You can see the code I used here:
+
+````
+<img src="<?php if(isset($evolutionImage[0])): ?>
+<?php echo $evolutionImage[0] ?><?php endif; ?>">
+<img src="<?php if(isset($evolutionImage[1])): ?>
+<?php echo $evolutionImage[1] ?><?php endif; ?>">
+...
+````
